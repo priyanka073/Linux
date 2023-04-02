@@ -1,0 +1,53 @@
+#print column 2 from data file
+awk '{print $2}' data
+
+#print multiple column like column 2 and column 4 from data file
+awk '{print $2,$4}' data
+
+#print last column from data file
+awk '{print $NF}' data
+
+#print last column to get all files and directories name from your current working directory
+ls -ltr | awk '{print $NF}'
+
+#add serial number before your column
+awk '{print $NR, $0}' data
+
+#add serial number, coln and space before your column 
+awk '{print $NR ": " $0}' data
+
+#print particular column from country.txt file whoes data are comma separated not in column format like csv file
+awk -F, '{print $4}' country.txt
+
+#if user name(column 2) is ankit then salary(column 3) change to 90000  
+awk '{if($2=="ankit"){$3="90000"} print $0}' country.txt
+
+#print data of users whose salary(column 3) is more than 40000?
+awk '{if($3>40000) print $0}' country.txt
+
+#print line whose length of character is more than 15?
+awk 'length($0)>15' country.txt
+
+#print line in which india is present
+awk '/India/ {print}' country.txt
+
+#print specific line example 3rd line?
+awk 'NR==3 {print}' country.txt
+
+#print range of lines, 5 to 9th line?
+awk 'NR==5,NR==9 {print}' country.txt
+
+#print line no. which lines are empty?
+awk 'NF==0 {print NR}' data
+
+#How to check no. of lines in the file?
+awk 'END {print NR}' file_name
+
+#use for loop in AWK command?
+awk 'BEGIN {for(i=0;i<=10;i++) print i;}'
+
+#use while loop in AWK command?
+awk 'BEGIN {while(i<10){ i++; print "Num is " i;}}'
+
+
+
