@@ -1,47 +1,69 @@
-#print column 2 from data file
-awk '{print $2}' data
+
+#print all the contents of file 
+awk '{print $0}' employee.txt 
+
+#print all the contents of file 
+awk '{print}' employee.txt 
+
+#print column 2 from file
+awk '{print $2}' employee.txt 
+
+#print first field of first column from file
+awk '{print $1}' employee.txt | head -1
+
+#print line that start from specific letter like v
+awk '/^v/' employee.txt
+
+#print line that end by specific letter like n
+awk '/n^/' employee.txt
+
+#print line that does not end by specific letter like K
+awk '! /K^/' employee.txt
+
+#print lines that end with the pattern N/A.
+awk '/N\/A$/' employee.txt 
 
 #print multiple column like column 2 and column 4 from data file
-awk '{print $2,$4}' data
+awk '{print $2 "\t" $4}' employee.txt 
 
 #print last column from data file
-awk '{print $NF}' data
+awk '{print $NF}' employee.txt 
 
 #print last column to get all files and directories name from your current working directory
 ls -ltr | awk '{print $NF}'
 
-#add serial number before your column
-awk '{print $NR, $0}' data
+#add serial number before your first column
+awk '{print NR, $0}' employee.txt 
 
 #add serial number, coln and space before your column 
-awk '{print $NR ": " $0}' data
+awk '{print NR ": " $0}' employee.txt 
 
 #print particular column from country.txt file whoes data are comma separated not in column format like csv file
 awk -F, '{print $4}' country.txt
 
-#if user name(column 2) is ankit then salary(column 3) change to 90000  
-awk '{if($2=="ankit"){$3="90000"} print $0}' country.txt
+#if user name(column 1) is ajay then salary(column 4) change to 90000  
+awk '{if($1=="ajay"){$4="90000"} print $0}' employee.txt
 
-#print data of users whose salary(column 3) is more than 40000?
-awk '{if($3>40000) print $0}' country.txt
+#print data of users whose salary(column 4) is more than 40000?
+awk '{if($4>40000) print $0}' employee.txt
 
 #print line whose length of character is more than 15?
-awk 'length($0)>15' country.txt
+awk 'length($0)>15' employee.txt
 
 #print line in which india is present
-awk '/India/ {print}' country.txt
+awk '/peon/ {print}' employee.txt
 
 #print specific line example 3rd line?
-awk 'NR==3 {print}' country.txt
+awk 'NR==3 {print}' employee.txt
 
 #print range of lines, 5 to 9th line?
-awk 'NR==5,NR==9 {print}' country.txt
+awk 'NR==5,NR==9 {print}' employee.txt
 
 #print line no. which lines are empty?
-awk 'NF==0 {print NR}' data
+awk 'NF==0 {print NR}' employee.txt
 
 #How to check no. of lines in the file?
-awk 'END {print NR}' file_name
+awk 'END {print NR}' employee.txt
 
 #use for loop in AWK command?
 awk 'BEGIN {for(i=0;i<=10;i++) print i;}'
@@ -49,5 +71,35 @@ awk 'BEGIN {for(i=0;i<=10;i++) print i;}'
 #use while loop in AWK command?
 awk 'BEGIN {while(i<10){ i++; print "Num is " i;}}'
 
+#To print the first item ($1) and then the second last item $(NF-1) from each line in file
+awk '{print $1, $(NF-1) }' employee.txt
 
+#To print the length of the longest input line.
+awk '{ if (length($0) > max) max = length($0) } END { print max }' employee.txt
 
+#To print seven random numbers from zero to 100, inclusive.
+awk 'BEGIN { for (i = 1; i <= 7; i++) print int(101 * rand()) }'
+
+#To print non-empty line from a file.
+awk 'NF > 0' employee.txt
+
+#print the squares of first numbers from 1 to n say 6:  
+awk 'BEGIN { for(i=1;i<=6;i++) print "square of", i, "is",i*i; }' 
+
+#To find the value of exp 8
+awk 'BEGIN{x=exp(8); print x}'  
+
+#To calculate the total salary 4th column if data in csv format, comma separated 
+awk -F"," '{x+=$4}END{print x}' employee.txt
+
+#separate the output by an underscore (_) symbol
+awk 'BEGIN { ORS ="-"} {print $0}' employee.txt 
+
+#to count and print the number of lines for every pattern match with letter a and store result in output file
+awk '/a/{++cnt} END {print "Count = ", cnt}' employee.txt > output.txt
+
+#print the number of character with message
+awk '{ print "The number of characters in line", NR,"=" length($0) }' employee.txt
+
+#print line if last column contain N/A
+awk '{ if($NF == "N/A") print $0}' employee.txt

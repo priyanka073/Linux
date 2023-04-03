@@ -1,54 +1,74 @@
+## AWK
+
 awk is a scripting language, and it is helpful when working in the command line. It's also a widely used command for text processing.
 
 When using awk, you are able to select data – one or more pieces of individual text – based on a pattern you provide.
+It acts as a filter in Linux. It is also referred as gawk (GNU awk) In Linux.
 
-Syntax:
+It is one of the most widely used tools for the programmer, as they write the scaled-down effective program in the form of a statement to define the text patterns and designs.
+
+## How is it named as AWK?
+This command is named by using the first letter of the name of three people who wrote the original version of this command in 1977. Their names are Alfred Aho, Peter Weinberger, and Brian Kernighan and they were from AT & T Bell Laboratories.
+
+
+## Features of AWK command
+Various features of the Awk command are as follows:
+
+It scans a file line by line.
+It splits a file into multiple fields.
+It compares the input text or a segment of a text file.
+It performs various actions on a file like searching a specified text and more.
+It formats the output lines.
+It performs arithmetic and string operations.
+It applies the conditions and loops on output.
+It transforms the files and data on a specified structure.
+It produces the format reports.
+
+
+## Syntax:
 awk options 'selection _criteria {action }' input-file > output-file
 
-Options:  
--f program-file : Reads the AWK program source from the file 
+
+## Options:  
+- -f program-file : Reads the AWK program source from the file 
                   program-file, instead of from the 
                   first command line argument.
--F fs            : Use fs for the input field separator
+- -F fs            : Use fs for the input field separator
 
-Built-In Variables In Awk
+
+ ## Built-In Variables In Awk
 
 Awk’s built-in variables include the field variables—$1, $2, $3, and so on ($0 is the entire line) — that break a line of text into individual words or pieces called fields. 
 
-NR: NR command keeps a current count of the number of input records. Remember that records are usually lines. If you would like each line to have a line-number count, you would use the NR built-in variable
+- NR: NR command keeps a current count of the number of input records. Remember that records are usually lines. The awk command performs action once for each line. These lines are said as records.
 
-NF: To print the last field (the last column), you can also use $NF which represents the last field in a record. 
+- NF: To print the last field (the last column), you can also use $NF which represents the last field in a record. 
 
-FS: FS command contains the field separator character which is used to divide fields on the input line. The default is “white space”, meaning space and tab characters. FS can be reassigned to another character (typically in BEGIN) to change the field separator. 
+- FS: It is used to create a field separator character to divide fields into the input lines.
 
-RS: RS command stores the current record separator character. Since, by default, an input line is the input record, the default record separator character is a newline. 
+- RS: RS command stores the current record separator character. Since, by default, an input line is the input record, the default record separator character is a newline. 
 
-OFS: OFS command stores the output field separator, which separates the fields when Awk prints them. The default is a blank space. Whenever print has several parameters separated with commas, it will print the value of OFS in between each parameter. 
+- OFS: It is used to store the output field separator. It separates the output fields.
 
-ORS: ORS command stores the output record separator, which separates the output lines when Awk prints them. The default is a newline character. print automatically outputs the contents of ORS at the end of whatever it is given to print. 
-
-
+- ORS: It is used to store the output record separator. It separates the output records. It prints the content of the ORS command automatically.
 
 
 
+### employee.txt
 
-information.txt, that contains data separated into different columns.
-The file contents could look something like this:
+| Name   | Post     | Department | Salary | ID  |
+|--------|----------|------------|--------|-----|
+|        |          |            |        |     |
+| ajay   | manager  | account    | 45000  | 400 |
+| sunil  | clerk    | account    | 25000  | N/A |
+| varun  | manager  | sales      | 50000  | 600 |
+| amit   | manager  | account    | 47000  | 400 |
+| tarun  | peon     | sales      | 15000  | N/A |
+| deepak | clerk    | sales      | 23000  | 400 |
+| sunil  | peon     | sales      | 13000  | 500 |
+| satvik | director | purchase   | 80000  | 300 |
 
-fristName       lastName        age     city       ID
 
-Thomas          Shelby          30      Rio        400
-Omega           Night           45      Ontario    600
-Wood            Tinker          54      Lisbon     N/A
-Giorgos         Georgiou        35      London     300
-Timmy           Turner          32      Berlin     N/A
 
-data file
 
-ID      Name        Salary     country       
-
-1       ankit          25000     India        
-2       Night          45000     Belgium    
-3       Tinker         55000     Germany     
-4       Georgiou       35000     India     
 
