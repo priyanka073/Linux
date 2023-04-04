@@ -1,0 +1,33 @@
+#top command will automatically exit after 10 number of repetition. show only 10 task
+top -n 10
+
+#Display Specific User Process
+top -u ankit
+
+#To highlight running process in color used 'z' option in Top.
+top -z
+
+#display absolute path of running process
+top -c
+
+#kill the process by pid
+top -k <pid>
+
+#to change the interval of refresh from default 3 seconds to 5 seconds
+top -d 5
+
+#to sort the running process by memory usage
+top -M 
+
+#change the nice value of pid
+top -r <pid> <nice_value>
+top -r 74319 2
+
+#to get information of column field, field management
+top -field
+
+#get help related options used in top command
+top -help
+
+#Starts top in secure mode, even for root.
+top -s
