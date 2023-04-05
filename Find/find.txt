@@ -1,0 +1,42 @@
+#How to search a file based on their size? M for MB, K for KB, G for GB, c for bytes
+$ find . -size 50M
+
+#How to find only file or directory in a given path?f for file, d for directory, l for link
+$ find . -type f
+
+#How to search a file based on it's name?
+$ find . -name test_file
+
+#How to ignore upper & lower case in file name while searching?
+$ find . -iname test_file
+
+#How to search files for a given user only?find /path/ -user user_name
+$ find . -user ankit
+
+#How to search a file based on the inode no.? find /path/ -inum inode_number
+$ find . -inum 346119
+
+#How to search a file based on the no. of links, search file has 3 links?find /path/ -links <no._of_links>
+$ find . -links 3
+
+#How to search a file based on their permissions?find /path/ -perm /u=r
+$ find . -perm /u=r
+$ find . -perm 777
+
+#How to search all the files which start with letter a?
+$ find . -iname a*
+
+#How to search all the files which are modified/created after last.txt file?
+$ find . -newer last.txt
+
+#How to search all the empty files in a given directory?
+$ find . -empty
+
+#How to search all the empty files and delete them?
+$ find . -empty -exec rm {} \;
+
+#How to search all the files whose size are between 1-50 MB
+$ find . -size +1M -size -50M
+
+#How to search 15 days old file
+$ find . -mtime 15
